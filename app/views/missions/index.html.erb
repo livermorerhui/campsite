@@ -1,0 +1,12 @@
+<table class="table table-boldered">
+  <% @missions.each do |mission| %>
+  <tr>
+    <td>
+      <%= link_to(mission.title, mission_path(mission)) %>
+    </td>
+    <td>
+      <%= mission.created_at %>
+    </td>
+  </tr>
+  <% end %>
+</table>
