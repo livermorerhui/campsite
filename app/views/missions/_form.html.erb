@@ -1,0 +1,10 @@
+<%= simple_form_for @mission do |f| %>
+
+<%= f.input :title %>
+<%= f.input :description %>
+<%= f.input :location %>
+
+<%= f.submit "Submit" %>
+<%= link_to 'Back', missions_path %>
+
+<% end %>
