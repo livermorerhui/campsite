@@ -1,4 +1,5 @@
 <div class="mission">
+  <%= link_to("Write a job", new_mission_job_path(@mission), class: "btn btn-default pull-right")%>
   <% if current_user && current_user == @mission.user %>
     <%= link_to("Edit", edit_mission_path(@mission), class: "btn btn-primary pull-right")%>
   <% end %>
