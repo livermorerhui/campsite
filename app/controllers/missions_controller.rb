@@ -15,7 +15,8 @@ class MissionsController < ApplicationController
 
   def create
     @mission = Mission.new(mission_params)
-
+    @mission.user = current_user
+    
     if @mission.save
       redirect_to missions_path
     else
