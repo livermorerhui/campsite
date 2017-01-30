@@ -10,5 +10,6 @@ class User < ApplicationRecord
  end
 
  has_many :missions
+ has_many :jobs
 
 end
