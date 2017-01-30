@@ -12,8 +12,10 @@
       <%= mission.user.email %>
     </td>
     <td>
-      <%= link_to("Edit", edit_mission_path(mission)) %> |
-      <%= link_to("Destroy", mission_path(mission), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+      <% if current_user && current_user == mission.user %>
+        <%= link_to("Edit", edit_mission_path(mission)) %> |
+        <%= link_to("Destroy", mission_path(mission), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+      <% end %>
     </td>
     <td>
       <%= mission.created_at %>
