@@ -25,6 +25,7 @@ class MissionsController < ApplicationController
   # POST /missions.json
   def create
     @mission = Mission.new(mission_params)
+    @mission.user = current_user
 
     if @mission.save
       redirect_to missions_path, notice: 'Mission was successfully created.'
