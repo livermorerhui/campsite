@@ -3,7 +3,8 @@ class Admin::MissionsController < ApplicationController
 
   before_action :set_mission, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
-  before_filter :require_is_admin
+  #before_filter :require_is_admin
+  before_action :find_mission_and_check_permission, only: [:edit, :update, :destroy]
 
   # GET /missions
   # GET /missions.json
@@ -60,6 +61,12 @@ class Admin::MissionsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_mission
       @mission = Mission.find(params[:id])
+    end
+    
+    def find_mission_and_check_permission
+      if current_user != @mission.user
+        redirect_to root_path, alert: "You have no permission."
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
