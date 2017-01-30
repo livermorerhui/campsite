@@ -1,4 +1,4 @@
-class JobsController < ApplicationController
+class Admin::JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
   before_action :find_job_and_check_permission, only: [:edit, :update, :destroy]

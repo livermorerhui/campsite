@@ -15,6 +15,7 @@ class Admin::MissionsController < ApplicationController
   # GET /missions/1
   # GET /missions/1.json
   def show
+    @jobs = @mission.jobs
   end
 
   # GET /missions/new

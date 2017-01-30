@@ -1,5 +1,5 @@
 <div class="group">
-   <%= link_to("Add a job", new_admin_job_path(@mission), class: "btn btn-default pull-right")%>
+   <%= link_to("Add a job", new_mission_job_path(@mission), class: "btn btn-default pull-right")%>
 </div>
 
 <h1> <%= @mission.title %> </h1>
@@ -7,8 +7,26 @@
 <p>
   <%= simple_format(@mission.description) %>
   <%= simple_format(@mission.location) %>
-
 </p>
 
 <%= link_to 'Edit', edit_admin_mission_path(@mission) %>
 <%= link_to 'Back', admin_missions_path %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>文章内容</th>
+      <th>发表者</th>
+      <th>发表时间</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.title %></td>
+        <td><%= job.user.email %></td>
+        <td><%= job.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
