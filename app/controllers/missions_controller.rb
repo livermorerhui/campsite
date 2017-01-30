@@ -3,6 +3,7 @@ class MissionsController < ApplicationController
 
   before_action :set_mission, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
+  before_filter :require_is_admin, only: [:edit, :update, :destroy]
 
   # GET /missions
   # GET /missions.json

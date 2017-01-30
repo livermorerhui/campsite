@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+ #只有 admin 才能有相应的权限操作
  def admin?
    is_admin
  end
