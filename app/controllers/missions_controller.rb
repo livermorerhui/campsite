@@ -7,6 +7,7 @@ class MissionsController < ApplicationController
 
   def show
     @mission = Mission.find(params[:id])
+    @jobs = @mission.jobs
   end
 
   def new
