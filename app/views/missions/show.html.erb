@@ -1,3 +1,9 @@
+<div class="mission">
+  <% if current_user && current_user == @mission.user %>
+    <%= link_to("Edit", edit_mission_path(@mission), class: "btn btn-primary pull-right")%>
+  <% end %>
+</div>
+
 <h1> <%= @mission.title %> </h1>
 
 <p>
