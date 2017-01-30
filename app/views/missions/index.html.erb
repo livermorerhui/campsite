@@ -4,6 +4,7 @@
     <tr>
       <td>Title</td>
       <td>Creator </td>
+      <td>发布时间 </td>
     </tr>
   </thead>
   <% @missions.each do |mission| %>
@@ -12,10 +13,10 @@
       <%= link_to(mission.title, mission_path(mission)) %>
     </td>
     <td> <%= mission.user.email %> </td>
-    <td>
+    <!--<td>
      <%= link_to("Edit", edit_mission_path(mission)) %>
      <%= link_to("Destroy", mission_path(mission), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
-    </td>
+   </td>-->
     <td>
       <%= mission.created_at %>
     </td>

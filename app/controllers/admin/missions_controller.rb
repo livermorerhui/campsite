@@ -9,7 +9,7 @@ class Admin::MissionsController < ApplicationController
   # GET /missions
   # GET /missions.json
   def index
-    @missions = Mission.all
+    @missions = current_user.missions
   end
 
   # GET /missions/1
@@ -62,7 +62,7 @@ class Admin::MissionsController < ApplicationController
     def set_mission
       @mission = Mission.find(params[:id])
     end
-    
+
     def find_mission_and_check_permission
       if current_user != @mission.user
         redirect_to root_path, alert: "You have no permission."

@@ -2,8 +2,9 @@
 
 <p>
   <%= simple_format(@mission.description) %>
+  <%= simple_format(@mission.location) %>
 
 </p>
 
-<%= link_to 'Edit', edit_admin_mission_path(@mission) %> |
+<%= link_to 'Edit', edit_admin_mission_path(@mission) %>
 <%= link_to 'Back', admin_missions_path %>

@@ -15,7 +15,7 @@
   <% @missions.each do |mission| %>
   <tr>
     <td>
-      <%= link_to(mission.title, admin_missions_path(mission)) %>
+      <%= link_to(mission.title, admin_mission_path(mission)) %>
     </td>
     <td>
      <%= link_to("Edit", edit_admin_mission_path(mission)) %>
