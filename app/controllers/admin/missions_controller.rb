@@ -27,7 +27,7 @@ class Admin::MissionsController < ApplicationController
     @mission = Mission.new(mission_params)
 
     if @mission.save
-      redirect_to missions_path, notice: 'Mission was successfully created.'
+      redirect_to admin_missions_path, notice: 'Mission was successfully created.'
     else
       render :new
     end
@@ -41,7 +41,7 @@ class Admin::MissionsController < ApplicationController
   # PATCH/PUT /missions/1.json
   def update
     if @mission.update(mission_params)
-      redirect_to missions_path, notice: 'Mission was successfully updated.'
+      redirect_to admin_missions_path, notice: 'Mission was successfully updated.'
     else
       render :edit
     end
@@ -52,7 +52,7 @@ class Admin::MissionsController < ApplicationController
   def destroy
     @mission.destroy
 
-    redirect_to missions_path, notice: 'Mission was successfully destroyed.'
+    redirect_to admin_missions_path, notice: 'Mission was successfully destroyed.'
   end
 
   private
