@@ -3,11 +3,17 @@
 one:
   title: MyString
   description: MyText
-  location: MyText
+  people: 1
+  wage_lower_bound: 1
+  wage_upper_bound: 1
+  mission_id: 1
   user_id: 1
 
 two:
   title: MyString
   description: MyText
-  location: MyText
+  people: 1
+  wage_lower_bound: 1
+  wage_upper_bound: 1
+  mission_id: 1
   user_id: 1

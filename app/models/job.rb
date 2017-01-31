@@ -1,8 +1,8 @@
-class Mission < ApplicationRecord
+class Job < ApplicationRecord
 
   validates :title, presence: true
 
   belongs_to :user
-  has_many :jobs
-  
+  belongs_to :mission
+
 end
