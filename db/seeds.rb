@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "自动创建2个user账号"
+
+create_account = User.create([email: 'ceshi@qq.com', password: '111111', password_confirmation: '111111'])
+create_account = User.create([email: 'ceshi2@qq.com', password: '111111', password_confirmation: '111111'])
+puts "user account created."

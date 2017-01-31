@@ -1,0 +1,57 @@
+class MissionsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
+  before_action :find_mission_and_check_permission, only: [:edit, :update, :destroy]
+
+  def index
+    @missions = Mission.all
+  end
+
+  def new
+    @mission = Mission.new
+  end
+
+  def create
+    @mission = Mission.new(mission_params)
+    @mission.user = current_user
+
+    if @mission.save
+      redirect_to missions_path
+    else
+      render :new
+    end
+  end
+
+  def show
+    @mission = Mission.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def update
+    if @mission.update(mission_params)
+      redirect_to missions_path, notice: "Update Success"
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @mission.destroy
+    redirect_to missions_path, alert: "Mission deleted"
+  end
+
+ private
+
+  def find_mission_and_check_permission
+    @mission = Mission.find(params[:id])
+
+    if current_user != @mission.user
+      redirect_to root_path, alert: "You have no permission."
+    end
+  end
+
+  def mission_params
+    params.require(:mission).permit(:title, :description, :location)
+  end
+end
