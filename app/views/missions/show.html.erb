@@ -1,6 +1,6 @@
 <div class="mission">
-  <%= link_to("Write a job", new_mission_job_path(@mission), class: "btn btn-default pull-right")%>
-  <% if current_user && current_user == @mission.user %>
+    <%= link_to("Write a job", new_mission_job_path(@mission), class: "btn btn-default pull-right")%>
+    <% if current_user && current_user == @mission.user %>
     <%= link_to("Edit", edit_mission_path(@mission), class: "btn btn-primary pull-right")%>
   <% end %>
 </div>
@@ -20,8 +20,8 @@
       <%= link_to(job.title, mission_job_path(job)) %>
     </td>
     <td>
-      <%= link_to("Edit", edit_mission_job_path(job)) %> |
-      <%= link_to("Destroy", mission_job_path(job), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+        <%= link_to("Edit", edit_mission_job_path(job)) %> |
+        <%= link_to("Destroy", mission_job_path(job), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
     </td>
     <td>
       <%= job.created_at %>

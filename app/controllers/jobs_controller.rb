@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new, :create]
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :find_job_and_check_permission, only: [:edit, :update, :destroy]
 
 
@@ -19,6 +19,11 @@ class JobsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @mission = Mission.find(params[:mission_id])
+    @job = Job.find(params[:id])
   end
 
   def edit
