@@ -24,15 +24,6 @@ ActiveRecord::Schema.define(version: 20170130161503) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "missionps", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.text     "location"
-    t.integer  "usrt_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "missions", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
