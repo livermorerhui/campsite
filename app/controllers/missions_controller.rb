@@ -15,7 +15,7 @@ class MissionsController < ApplicationController
     @mission.user = current_user
 
     if @mission.save
-      redirect_to missions_path
+      redirect_to leader_missions_path
     else
       render :new
     end
@@ -31,7 +31,7 @@ class MissionsController < ApplicationController
 
   def update
     if @mission.update(mission_params)
-      redirect_to missions_path, notice: "Update Success"
+      redirect_to leader_missions_path, notice: "Update Success"
     else
       render :edit
     end
@@ -39,7 +39,7 @@ class MissionsController < ApplicationController
 
   def destroy
     @mission.destroy
-    redirect_to missions_path, alert: "Mission deleted"
+    redirect_to leader_missions_path, alert: "Mission deleted"
   end
 
  private

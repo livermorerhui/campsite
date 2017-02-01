@@ -1,3 +1,6 @@
+<div class="pull-right">
+  <%= link_to("Add a mission", new_mission_path, :class => "btn btn-default" ) %>
+</div>
 
 <table class="table table-boldered">
   <thead>
@@ -6,8 +9,8 @@
         <th>内容</th>
         <th>地点</th>
         <th>mission id</th>
-        <th>user id</th>
-        <th>创建者</th>
+        <th>job count</th>
+        <th></th>
         <th>发布时间</th>
       </tr>
   </thead>
@@ -18,8 +21,13 @@
     <td><%= mission.description %></td>
     <td><%= mission.location %></td>
     <td><%= mission.id %></td>
-    <td><%= mission.user_id %></td>
-    <td><%= mission.user.email %></td>
+    <td><%= mission.jobs.count %></td>
+    <td>
+      <% if current_user && current_user == mission.user %>
+        <%= link_to("Edit", edit_mission_path(mission)) %> |
+        <%= link_to("Destroy", mission_path(mission), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+      <% end %>
+    </td>
     <td>
       <%= mission.created_at %>
     </td>

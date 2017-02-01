@@ -1,0 +1,2 @@
+module Leader::MissionsHelper
+end
