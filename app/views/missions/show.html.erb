@@ -1,5 +1,5 @@
 <div class="mission">
-    <% if current_user && current_user == @mission.user %>
+  <% if current_user && current_user == @mission.user %>
     <%= link_to("Write a job", new_mission_job_path(@mission), class: "btn btn-default pull-right")%>
     <%= link_to("Edit", edit_mission_path(@mission), class: "btn btn-primary pull-right")%>
   <% end %>
@@ -15,18 +15,34 @@
 <table class="table table-boldered">
   <thead>
       <tr>
-        <th>文章内容</th>
-        <th>发表者</th>
-        <th>发表时间</th>
+        <th>job title</th>
+        <th>内容</th>
+        <th>招聘人数</th>
+        <th>薪资下限</th>
+        <th>薪资上限</th>
+        <th>job id</th>
+        <th>mission id</th>
+        <th>user id</th>
+        <th>创建者</th>
+        <th></th>
+        <th>发布时间</th>
       </tr>
-    </thead>
+  </thead>
   <tbody>
     <% @jobs.each do |job| %>
         <tr>
-          <td><%= link_to(job.title, mission_job_path(job)) %></td>
+          <td><%= link_to(job.title, mission_job_path(job.mission, job)) %></td>
+          <td><%= job.description %></td>
+          <td><%= job.people %></td>
+          <td><%= job.wage_upper_bound %></td>
+          <td><%= job.wage_lower_bound %></td>
+          <td><%= job.id %></td>
+          <td><%= job.mission_id %></td>
+          <td><%= job.user_id %></td>
+          <td><%= job.user.email %></td>
           <td>
-            <%= link_to("Edit", edit_mission_job_path(job)) %> |
-            <%= link_to("Destroy", mission_job_path(job), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+            <%= link_to("Edit", edit_mission_job_path(job.mission, job)) %> |
+            <%= link_to("Destroy", mission_job_path(job.mission, job), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
           </td>
           <td>
             <%= job.created_at %>
