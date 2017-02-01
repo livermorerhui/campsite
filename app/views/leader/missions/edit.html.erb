@@ -2,13 +2,12 @@
 
 <div class="col-md-4 col-md-offset-4">
 
-  <%= simple_form_for @mission do |f| %>
+  <%= simple_form_for [:leader,@mission] do |f| %>
+
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :location %>
-    <%= f.submit "Submit" %>
-    <%= link_to("Back", missions_path, class: "btn btn-default")%>
-
+    <%= f.submit "Submit" , class: "btn btn-primary" %>
+    <%= link_to("Back", leader_missions_path, class: "btn btn-default")%>
   <% end %>
-
 </div>

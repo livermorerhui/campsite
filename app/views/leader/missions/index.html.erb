@@ -1,5 +1,5 @@
 <div class="pull-right">
-  <%= link_to("Add a mission", new_mission_path, :class => "btn btn-default" ) %>
+  <%= link_to("Add a mission", new_leader_mission_path, :class => "btn btn-default" ) %>
 </div>
 
 <table class="table table-boldered">
@@ -15,23 +15,23 @@
       </tr>
   </thead>
   <tbody>
-  <% @missions.each do |mission| %>
-  <tr>
-    <td><%= link_to(mission.title, mission_path(mission)) %></td>
-    <td><%= mission.description %></td>
-    <td><%= mission.location %></td>
-    <td><%= mission.id %></td>
-    <td><%= mission.jobs.count %></td>
-    <td>
-      <% if current_user && current_user == mission.user %>
-        <%= link_to("Edit", edit_mission_path(mission)) %> |
-        <%= link_to("Destroy", mission_path(mission), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
-      <% end %>
-    </td>
-    <td>
-      <%= mission.created_at %>
-    </td>
-  </tr>
-  <% end %>
+    <% @missions.each do |mission| %>
+    <tr>
+      <td><%= link_to(mission.title, leader_mission_path(mission)) %></td>
+      <td><%= mission.description %></td>
+      <td><%= mission.location %></td>
+      <td><%= mission.id %></td>
+      <td><%= mission.jobs.count %></td>
+      <td>
+        <% if current_user && current_user == mission.user %>
+          <%= link_to("Edit", edit_leader_mission_path(mission)) %> |
+          <%= link_to("Destroy", leader_mission_path(mission), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+        <% end %>
+      </td>
+      <td>
+        <%= mission.created_at %>
+      </td>
+    </tr>
+    <% end %>
   </tbody>
 </table>

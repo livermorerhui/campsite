@@ -1,0 +1,43 @@
+<div class="col-md-12">
+
+  <h2 class="text-center"> 我发表过的Job </h2>
+
+<table class="table table-boldered">
+  <thead>
+      <tr>
+        <th>job title</th>
+        <th>内容</th>
+        <th>招聘人数</th>
+        <th>薪资下限</th>
+        <th>薪资上限</th>
+        <th>job id</th>
+        <th>mission name</th>
+        <th>user id</th>
+        <th>创建者</th>
+        <th></th>
+        <th>发布时间</th>
+      </tr>
+  </thead>
+  <tbody>
+    <% @jobs.each do |job| %>
+        <tr>
+          <td><%= link_to(job.title, leader_job_path(job)) %></td>
+          <td><%= job.description %></td>
+          <td><%= job.people %></td>
+          <td><%= job.wage_upper_bound %></td>
+          <td><%= job.wage_lower_bound %></td>
+          <td><%= job.id %></td>
+          <td><%= job.mission_id %></td>
+          <td><%= job.user_id %></td>
+          <td><%= job.user.email %></td>
+          <td>
+              <%= link_to("Edit", edit_leader_job_path(job)) %> |
+              <%= link_to("Destroy", leader_job_path(job), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+          </td>
+          <td>
+            <%= job.created_at %>
+         </td>
+       </tr>
+    <% end %>
+  </tbody>
+</table>
