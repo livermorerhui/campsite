@@ -41,8 +41,10 @@
           <td><%= job.user_id %></td>
           <td><%= job.user.email %></td>
           <td>
-            <%= link_to("Edit", edit_mission_job_path(job.mission, job)) %> |
-            <%= link_to("Destroy", mission_job_path(job.mission, job), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+            <% if current_user && current_user == @mission.user %>
+              <%= link_to("Edit", edit_mission_job_path(job.mission, job)) %> |
+              <%= link_to("Destroy", mission_job_path(job.mission, job), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
+            <% end %>
           </td>
           <td>
             <%= job.created_at %>
