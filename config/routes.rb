@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   end
 
   namespace :leader do
-    resources :missions
-    resources :jobs
+    resources :missions do
+      resources :jobs
+    end
   end
 
   root 'missions#index'

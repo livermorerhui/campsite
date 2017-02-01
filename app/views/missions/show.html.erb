@@ -1,8 +1,4 @@
 <div class="mission">
-  <% if current_user && current_user == @mission.user %>
-    <%= link_to("Write a job", new_mission_job_path(@mission), class: "btn btn-default pull-right")%>
-    <%= link_to("Edit", edit_mission_path(@mission), class: "btn btn-primary pull-right")%>
-  <% end %>
   <%= link_to("Back", missions_path(@mission), class: "btn btn-default pull-right")%>
 </div>
 
@@ -25,7 +21,6 @@
         <th>mission id</th>
         <th>user id</th>
         <th>创建者</th>
-        <th></th>
         <th>发布时间</th>
       </tr>
   </thead>
@@ -41,12 +36,6 @@
           <td><%= job.mission_id %></td>
           <td><%= job.user_id %></td>
           <td><%= job.user.email %></td>
-          <td>
-            <% if current_user && current_user == @mission.user %>
-              <%= link_to("Edit", edit_mission_job_path(job.mission, job)) %> |
-              <%= link_to("Destroy", mission_job_path(job.mission, job), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
-            <% end %>
-          </td>
           <td>
             <%= job.created_at %>
          </td>

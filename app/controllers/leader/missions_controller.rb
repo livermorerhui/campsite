@@ -56,6 +56,4 @@ class Leader::MissionsController < ApplicationController
     params.require(:mission).permit(:title, :description, :location)
   end
 
-
-
 end

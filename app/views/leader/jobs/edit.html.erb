@@ -1,11 +1,10 @@
 
-<!-- 暂时不需要 -->
+<!-- Leader 修改职位内容 -->
 
-<!--
 <h1 class="text-center"> Edit a job </h1>
 
 <div class="col-md-4 col-md-offset-4">
-  <%= simple_form_for [@mission,@job] do |f| %>
+  <%= simple_form_for [:leader,@mission,@job] do |f| %>
 
     <%= f.input :title %>
     <%= f.input :description %>
@@ -16,4 +15,3 @@
     <%= f.submit "Submit" %>
   <% end %>
 </div>
--->
