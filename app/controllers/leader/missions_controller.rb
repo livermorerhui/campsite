@@ -1,7 +1,8 @@
 class Leader::MissionsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
-  before_action :find_mission_and_check_permission, only: [:show, :edit, :update, :destroy]
+  before_action :find_mission_and_check_permission, only: [:show, :edit, :update, :destroy, :publish, :hide]
+  layout "leader"
 
   def index
     @missions = current_user.missions
@@ -40,6 +41,16 @@ class Leader::MissionsController < ApplicationController
   def destroy
     @mission.destroy
     redirect_to leader_missions_path, alert: "Mission deleted"
+  end
+
+  def publish
+    @mission.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @mission.hide!
+    redirect_to :back
   end
 
  private

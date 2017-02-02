@@ -23,9 +23,14 @@ class JobsController < ApplicationController
     @mission = Mission.find(params[:mission_id])
     @job = Job.find(params[:id])
 
-    if @mission != @job.mission
-      redirect_to mission_path(@mission), alert: "Address is not correct"
-    end
+      if @mission != @job.mission
+        redirect_to mission_path(@mission), alert: "Address is not correct"
+      end
+
+      if @job.is_hidden
+        flash[:warning] = "This Job already archieved"
+        redirect_to mission_path(@mission)
+      end
 
   end
 

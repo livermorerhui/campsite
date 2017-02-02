@@ -49,6 +49,11 @@
               <%= link_to("Edit", edit_leader_mission_job_path(job.mission, job)) %> |
               <%= link_to("Destroy", leader_mission_job_path(job.mission, job), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
             <% end %>
+            <% if job.is_hidden %>
+              <%= link_to("Publish", publish_leader_mission_job_path(job.mission, job), :method => :post, :class => "btn btn-xs btn-default") %>
+            <% else %>
+              <%= link_to("Hide", hide_leader_mission_job_path(job.mission, job), :method => :post, :class => "btn btn-xs btn-default") %>
+            <% end %>
           </td>
           <td>
             <%= job.created_at %>

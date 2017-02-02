@@ -1,7 +1,8 @@
 class Leader::JobsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :find_job_and_check_permission, only: [:edit, :update, :destroy]
+  before_action :find_job_and_check_permission, only: [:edit, :update, :destroy, :publish, :hide]
   before_action :find_job_and_check_permission2, only: [:new, :create]
+  layout "leader"
 
   #def index
     #@jobs = current_user.jobs
@@ -50,6 +51,15 @@ class Leader::JobsController < ApplicationController
     redirect_to leader_mission_path(@mission), alert: "Job Delete/删除成功"
   end
 
+  def publish
+    @job.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @job.hide!
+    redirect_to :back
+  end
   private
 
     def find_job_and_check_permission

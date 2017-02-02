@@ -33,6 +33,11 @@
           <%= link_to("Edit", edit_leader_mission_path(mission)) %> |
           <%= link_to("Destroy", leader_mission_path(mission), :method => :delete, :data => { :confirm => "Are you sure?" }) %>
         <% end %>
+        <% if mission.is_hidden %>
+          <%= link_to("Publish", publish_leader_mission_path(mission), :method => :post, :class => "btn btn-xs btn-default") %>
+        <% else %>
+          <%= link_to("Hide", hide_leader_mission_path(mission), :method => :post, :class => "btn btn-xs btn-default") %>
+        <% end %>
       </td>
       <td>
         <%= mission.created_at %>

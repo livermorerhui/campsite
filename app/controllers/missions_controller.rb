@@ -24,6 +24,10 @@ class MissionsController < ApplicationController
 
   def show
     @mission = Mission.find(params[:id])
+      if @mission.is_hidden
+        flash[:warning] = "This Mission already archieved"
+        redirect_to root_path
+      end
     @jobs = @mission.jobs.where(:is_hidden => false).order("created_at DESC")
   end
 

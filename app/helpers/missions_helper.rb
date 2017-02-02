@@ -2,9 +2,9 @@ module MissionsHelper
 
   def render_mission_status(mission)
     if mission.is_hidden
-      "(Hidden)"
+      content_tag(:span, "", :class => "fa fa-lock")
     else
-      "(Public)"
+      content_tag(:span, "", :class => "fa fa-globe")
     end
   end
 
