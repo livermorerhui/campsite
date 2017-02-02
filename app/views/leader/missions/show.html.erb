@@ -19,6 +19,7 @@
         <th class="text-center">job title</th>
         <th class="text-center">内容</th>
         <th class="text-center">招聘人数</th>
+        <th class="text-center">收到履历数量</th>
         <th class="text-center">薪资下限</th>
         <th class="text-center">薪资上限</th>
         <th class="text-center">job id</th>
@@ -38,6 +39,7 @@
           </td>
           <td><%= job.description %></td>
           <td><%= job.people %></td>
+          <td> <%= link_to(job.resumes.count, leader_mission_job_resumes_path(job.mission, job)) %> </td>
           <td><%= job.wage_lower_bound %></td>
           <td><%= job.wage_upper_bound %></td>
           <td><%= job.id %></td>

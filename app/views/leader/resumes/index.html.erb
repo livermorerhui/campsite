@@ -1,0 +1,5 @@
+<h2> <%= @job.title %> - 履历列表 </h2>
+<%= link_to("Back", leader_mission_path(@mission), class: "btn btn-primary")%>
+
+<hr>
+<%= render :partial => "resume", :collection => @resumes, :as => :resume %>
