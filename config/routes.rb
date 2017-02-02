@@ -4,27 +4,25 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :missions do
-    resources :jobs
+    resources :jobs do
+      resources :resumes
+    end
   end
 
   namespace :leader do
-
     resources :missions do
       member do
         post :publish
         post :hide
       end
-
       resources :jobs do
         member do
           post :publish
           post :hide
         end
       end
-      
     end
-
   end
 
-  root 'missions#index'
+  root 'welcome#index'
 end

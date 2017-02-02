@@ -32,6 +32,10 @@ class Leader::JobsController < ApplicationController
       redirect_to leader_mission_path(@mission), alert: "Address is not correct"
     end
 
+    if current_user != @job.user
+      redirect_to leader_mission_path(@mission), alert: "You have no permission/非创建者，无权限操作"
+    end
+
   end
 
   def edit
@@ -66,7 +70,7 @@ class Leader::JobsController < ApplicationController
       @mission = Mission.find(params[:mission_id])
       @job = Job.find(params[:id])
 
-      if current_user != @mission.user
+      if current_user != @job.user
         redirect_to leader_mission_path(@mission), alert: "You have no permission/非创建者，无权限操作"
       end
     end

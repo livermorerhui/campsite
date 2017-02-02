@@ -1,0 +1,10 @@
+<h3> 投交履历到 <%= @job.title %> </h3>
+
+<hr>
+
+<%= simple_form_for [@mission, @job, @resume] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :attachment %>
+  <%= f.submit "送出" %>
+  <%= link_to("Back", mission_job_path(@mission, @job) )%>
+<% end %>

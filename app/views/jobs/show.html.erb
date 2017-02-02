@@ -5,6 +5,9 @@
 
 <p>
   <%= simple_format(@job.description) %>
-  <%= link_to("Back", mission_path(@mission), class: "btn btn-primary pull-right")%>
-
+  <%= link_to("Back", mission_path(@mission), class: "btn btn-primary pull-left")%>
 </p>
+
+<div class="text-center">
+  <%= link_to("投交履历", new_mission_job_resume_path(@mission,@job), :style => "font-size: 30px; text-decoration:underline;") %>
+</div>

@@ -3,21 +3,21 @@ class JobsController < ApplicationController
   before_action :find_job_and_check_permission, only: [:edit, :update, :destroy]
   before_action :find_job_and_check_permission2, only: [:new, :create]
 
-  def new
-    @job = Job.new
-  end
+  #def new
+  #  @job = Job.new
+  #end
 
-  def create
-    @job = Job.new(job_params)
-    @job.mission = @mission
-    @job.user = current_user
+  #def create
+  #  @job = Job.new(job_params)
+  #  @job.mission = @mission
+  #  @job.user = current_user
 
-    if @job.save
-      redirect_to mission_path(@mission)
-    else
-      render :new
-    end
-  end
+  #  if @job.save
+  #    redirect_to mission_path(@mission)
+  #  else
+  #    render :new
+  #  end
+  #end
 
   def show
     @mission = Mission.find(params[:mission_id])
@@ -25,31 +25,38 @@ class JobsController < ApplicationController
 
       if @mission != @job.mission
         redirect_to mission_path(@mission), alert: "Address is not correct"
+      else
+        if @job.is_hidden
+          flash[:warning] = "This Job already archieved"
+          redirect_to mission_path(@mission)
+        else
+          if @mission.is_hidden
+            flash[:warning] = "This Mission already archieved"
+            redirect_to missions_path
+          end
+        end
       end
 
-      if @job.is_hidden
-        flash[:warning] = "This Job already archieved"
-        redirect_to mission_path(@mission)
-      end
+
 
   end
 
-  def edit
-  end
+  #def edit
+  #end
 
-  def update
+  #def update
 
-    if @job.update(job_params)
-      redirect_to mission_path(@mission), notice: "Update Success/更新成功"
-    else
-      render :edit
-    end
-  end
+  #  if @job.update(job_params)
+  #    redirect_to mission_path(@mission), notice: "Update Success/更新成功"
+  #  else
+  #    render :edit
+  #  end
+  #end
 
-  def destroy
-    @job.destroy
-    redirect_to mission_path(@mission), alert: "Job Delete/删除成功"
-  end
+  #def destroy
+  #  @job.destroy
+  #  redirect_to mission_path(@mission), alert: "Job Delete/删除成功"
+  #end
 
   private
 

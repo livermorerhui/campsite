@@ -2,7 +2,8 @@ class Mission < ApplicationRecord
 
   belongs_to :user
   has_many :jobs
-
+  has_many :resumes
+    
   validates :title, presence: true
 
   def publish!
