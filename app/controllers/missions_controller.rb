@@ -28,7 +28,14 @@ class MissionsController < ApplicationController
         flash[:warning] = "This Mission already archieved"
         redirect_to root_path
       end
-    @jobs = @mission.jobs.where(:is_hidden => false).order("created_at DESC")
+    @jobs = case params[:order]
+            when 'by_lower_bound'
+              @mission.jobs.published.order('wage_lower_bound DESC')
+            when 'by_upper_bound'
+              @mission.jobs.published.order('wage_upper_bound DESC')
+            else
+              @mission.jobs.published.recent
+            end
   end
 
   def edit

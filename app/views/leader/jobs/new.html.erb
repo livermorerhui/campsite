@@ -12,7 +12,7 @@
     <%= f.input :wage_lower_bound, :label => "薪资下限" %>
     <%= f.input :wage_upper_bound, :label => "薪资上限" %>
     <%= f.input :is_hidden, :label => "隐藏" %>
-    <%= f.submit "Submit" %>
-    <%= link_to("Back", leader_mission_path, class: "btn btn-default")%>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+    <%= link_to("Back", leader_mission_path(@mission), class: "btn btn-default")%>
   <% end %>
 </div>
