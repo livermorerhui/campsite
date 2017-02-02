@@ -1,5 +1,5 @@
 class MissionsController < ApplicationController
-  
+
   before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
   before_action :find_mission_and_check_permission, only: [:edit, :update, :destroy]
 
@@ -54,6 +54,6 @@ class MissionsController < ApplicationController
   end
 
   def mission_params
-    params.require(:mission).permit(:title, :description, :location)
+    params.require(:mission).permit(:title, :description, :location, :contact_email)
   end
 end
