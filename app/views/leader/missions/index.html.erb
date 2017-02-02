@@ -19,7 +19,11 @@
   <tbody>
     <% @missions.each do |mission| %>
     <tr>
-      <td><%= link_to(mission.title, leader_mission_path(mission)) %></td>
+      <td>
+        <%= render_mission_status(mission) %>
+
+        <%= link_to(mission.title, leader_mission_path(mission)) %>
+      </td>
       <td><%= mission.description %></td>
       <td><%= mission.location %></td>
       <td><%= mission.id %></td>

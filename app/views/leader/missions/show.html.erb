@@ -32,11 +32,14 @@
   <tbody>
     <% @jobs.each do |job| %>
         <tr>
-          <td><%= link_to(job.title, leader_mission_job_path(job.mission, job)) %></td>
+          <td>
+            <%= render_job_status(job) %>
+            <%= link_to(job.title, leader_mission_job_path(job.mission, job)) %>
+          </td>
           <td><%= job.description %></td>
           <td><%= job.people %></td>
-          <td><%= job.wage_upper_bound %></td>
           <td><%= job.wage_lower_bound %></td>
+          <td><%= job.wage_upper_bound %></td>
           <td><%= job.id %></td>
           <td><%= job.mission_id %></td>
           <td><%= job.user_id %></td>

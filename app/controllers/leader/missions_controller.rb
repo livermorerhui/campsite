@@ -53,7 +53,7 @@ class Leader::MissionsController < ApplicationController
   end
 
   def mission_params
-    params.require(:mission).permit(:title, :description, :location, :contact_email)
+    params.require(:mission).permit(:title, :description, :location, :contact_email, :is_hidden)
   end
 
 end

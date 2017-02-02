@@ -70,7 +70,7 @@ class Leader::JobsController < ApplicationController
     end
 
     def job_params
-      params.require(:job).permit(:title, :description, :people, :wage_lower_bound, :wage_upper_bound)
+      params.require(:job).permit(:title, :description, :people, :wage_lower_bound, :wage_upper_bound, :is_hidden)
     end
 
 end

@@ -4,7 +4,7 @@ class MissionsController < ApplicationController
   before_action :find_mission_and_check_permission, only: [:edit, :update, :destroy]
 
   def index
-    @missions = Mission.all
+    @missions = Mission.where(:is_hidden => false).order("created_at DESC")
   end
 
   def new
@@ -24,7 +24,7 @@ class MissionsController < ApplicationController
 
   def show
     @mission = Mission.find(params[:id])
-    @jobs = @mission.jobs
+    @jobs = @mission.jobs.where(:is_hidden => false).order("created_at DESC")
   end
 
   def edit
@@ -54,6 +54,6 @@ class MissionsController < ApplicationController
   end
 
   def mission_params
-    params.require(:mission).permit(:title, :description, :location, :contact_email)
+    params.require(:mission).permit(:title, :description, :location, :contact_email, :is_hidden)
   end
 end

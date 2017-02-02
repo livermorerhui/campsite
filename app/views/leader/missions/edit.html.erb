@@ -11,6 +11,7 @@
     <%= f.input :description, :label => "行动描述" %>
     <%= f.input :contact_email, :label => "Email 我" %>
     <%= f.input :location, :label => "地点" %>
+    <%= f.input :is_hidden, :label => "隐藏" %>
     <%= f.submit "Submit" , class: "btn btn-primary" %>
     <%= link_to("Back", leader_missions_path, class: "btn btn-default")%>
   <% end %>
