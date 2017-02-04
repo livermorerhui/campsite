@@ -1,16 +1,23 @@
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid" style="padding-right: 30px;padding-left: 30px;">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <a class="navbar-brand" href="/">Job Listing </a>
+            <a class="navbar-brand"> 超体营 </a>
         </div>
+
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">首页</a></li>
+          <li><a href="/missions">Missions</a></li>
+          <li><a href="#">tips</a></li>
+        <!--   <li><a href="#">Page 3</a></li> -->
+        </ul>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                  <% if !current_user %>
-                   <li><%= link_to("注册", new_user_registration_path) %> </li>
-                   <li><%= link_to("登入", new_user_session_path) %></li>
+                   <li><a href="#" data-toggle="modal" data-target="#signup-modal" class = "fa fa-user">注册</a></li>
+                   <li><a href="#" data-toggle="modal" data-target="#login-modal" class = "fa fa-sign-in">登入</a></li>
                  <% else %>
                    <li class="dropdown">
                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -18,9 +25,9 @@
                          <b class="caret"></b>
                      </a>
                      <ul class="dropdown-menu">
-                       <li> <%= link_to("I am Leader", leader_missions_path) %></li>
+                       <a class="list-group-item" href="/leader/missions"><i class="fa fa-superpowers fa-fw" aria-hidden="true"></i>&nbsp; I am Leader</a>
                        <li class="divider"> </li>
-                       <li> <%= link_to("登出", destroy_user_session_path, method: :delete) %> </li>
+                       <li> <%= link_to(content_tag(:span, "登出", :class => "fa fa-sign-out"), destroy_user_session_path, method: :delete) %> </li>
                      </ul>
                    </li>
                  <% end %>
@@ -30,3 +37,41 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
+
+<!-- 以下代码添加在最后 -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog" role="document">
+    <div class="loginmodal-container">
+       <h2>进入超体营</h2>
+       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+         <div class="form-inputs">
+           <%= f.input :email, required: false, autofocus: true %>
+           <%= f.input :password, required: false %>
+           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+         </div>
+         <div class="form-actions">
+           <%= f.button :submit, "登入" %>
+         </div>
+       <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="loginmodal-container">
+      <h2>入营登记</h2>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :email, required: true, autofocus: true %>
+          <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+          <%= f.input :password_confirmation, required: true %>
+        </div>
+        <div class="form-actions">
+            <%= f.button :submit, "注册" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
