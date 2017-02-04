@@ -17,7 +17,7 @@ class ResumesController < ApplicationController
 
     if @resume.save
       flash[:notice] = "成功提交履历"
-      redirect_to mission_job_path(@job)
+      redirect_to mission_job_path(@mission,@job)
     else
       render :new
     end
