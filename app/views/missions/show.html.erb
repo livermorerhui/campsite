@@ -1,5 +1,5 @@
 <div class="mission">
-  <%= link_to("Back", missions_path(@mission), class: "btn btn-default pull-right")%>
+  <%= link_to("Back", missions_path(@mission), class: "btn btn-primary pull-right")%>
 </div>
 <div class="dropdown clearfix pull-right">
     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -23,32 +23,34 @@
 <table class="table table-boldered table-striped custab">
   <thead>
       <tr>
-        <th>job title</th>
-        <th>内容</th>
-        <th>招聘人数</th>
-        <th>薪资下限</th>
-        <th>薪资上限</th>
-        <th>job id</th>
+        <th class="text-center">job title</th>
+        <th class="text-center">内容</th>
+        <th class="text-center">招聘人数</th>
+        <th class="text-center">收到履历数量</th>
+        <th class="text-center">薪资下限</th>
+        <th class="text-center">薪资上限</th>
+  <!--      <th>job id</th>
         <th>mission id</th>
-        <th>user id</th>
-        <th>创建者</th>
-        <th>发布时间</th>
+        <th>user id</th>  -->
+        <th class="text-center">创建者</th>
+        <th class="text-center">发布时间</th>
       </tr>
   </thead>
-  <tbody>
+  <tbody class="text-center">
     <% @jobs.each do |job| %>
         <tr>
           <td><%= link_to(job.title, mission_job_path(job.mission, job)) %></td>
           <td><%= job.description %></td>
           <td><%= job.people %></td>
+          <td><%= job.resumes.count %></td>
           <td><%= job.wage_lower_bound %></td>
           <td><%= job.wage_upper_bound %></td>
-          <td><%= job.id %></td>
+    <!--      <td><%= job.id %></td>
           <td><%= job.mission_id %></td>
-          <td><%= job.user_id %></td>
+          <td><%= job.user_id %></td>  -->
           <td><%= job.user.email %></td>
           <td>
-            <%= job.created_at %>
+            <%= job.created_at.strftime("%Y/%m/%d") %>
          </td>
        </tr>
     <% end %>

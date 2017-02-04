@@ -5,27 +5,27 @@
 -->
 
 <table class="table table-boldered table-striped custab">
-  <thead>
-      <tr>
-        <th>任务标题</th>
-        <th>内容</th>
-        <th>地点</th>
-        <th>mission id</th>
-        <th>user id</th>
-        <th>创建者</th>
-        <th>发布时间</th>
+  <thead >
+      <tr >
+        <th class="text-center">任务标题</th>
+        <th class="text-center">内容</th>
+        <th class="text-center">地点</th>
+    <!--    <th>mission id</th>
+        <th>user id</th>  -->
+        <th class="text-center">创建者</th>
+        <th class="text-center">发布时间</th>
       </tr>
   </thead>
-  <tbody>
+  <tbody class="text-center">
   <% @missions.each do |mission| %>
   <tr>
     <td><%= link_to(mission.title, mission_path(mission)) %></td>
     <td><%= mission.description %></td>
     <td><%= mission.location %></td>
-    <td><%= mission.id %></td>
-    <td><%= mission.user_id %></td>
+<!--    <td><%= mission.id %></td>
+    <td><%= mission.user_id %></td>  -->
     <td><%= mission.user.email %></td>
-    <td><%= mission.created_at %></td>
+    <td><%= mission.created_at.strftime("%Y/%m/%d") %></td>
   </tr>
   <% end %>
   </tbody>

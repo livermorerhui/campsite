@@ -1,11 +1,11 @@
 <html>
 <head></head>
-<body>
+<body >
 <div class="mission">
   <% if current_user && current_user == @mission.user %>
-    <%= link_to("Write a job", new_leader_mission_job_path(@mission), class: "btn btn-default pull-right")%>
-    <%= link_to("Edit", edit_leader_mission_path(@mission), class: "btn btn-primary pull-right")%>
-    <%= link_to("Back", leader_missions_path(@mission), class: "btn btn-default pull-right")%>
+    <%= link_to(content_tag(:span, "Write a job", :class => "fa fa-book"), new_leader_mission_job_path(@mission), :class => "btn btn-success pull-right") %>
+    <%= link_to("Edit", edit_leader_mission_path(@mission), class: "btn btn-info pull-right")%>
+    <%= link_to("Back", leader_missions_path(@mission), class: "btn btn-primary pull-right")%>
   <% end %>
 </div>
 
@@ -24,15 +24,15 @@
         <th class="text-center">收到履历数量</th>
         <th class="text-center">薪资下限</th>
         <th class="text-center">薪资上限</th>
-        <th class="text-center">job id</th>
+    <!--    <th class="text-center">job id</th>
         <th class="text-center">mission id</th>
         <th class="text-center">user id</th>
-        <th class="text-center">创建者</th>
+        <th class="text-center">创建者</th>  -->
         <th class="text-center"></th>
         <th class="text-center">发布时间</th>
       </tr>
   </thead>
-  <tbody>
+  <tbody class="text-center">
     <% @jobs.each do |job| %>
         <tr>
           <td>
@@ -43,10 +43,10 @@
           <td> <%= link_to(job.resumes.count, leader_mission_job_resumes_path(job.mission, job)) %> </td>
           <td><%= job.wage_lower_bound %></td>
           <td><%= job.wage_upper_bound %></td>
-          <td><%= job.id %></td>
+        <!--  <td><%= job.id %></td>
           <td><%= job.mission_id %></td>
           <td><%= job.user_id %></td>
-          <td><%= job.user.email %></td>
+          <td><%= job.user.email %></td> -->
           <td>
             <% if current_user && current_user == @mission.user %>
               <%= link_to(content_tag(:span, "修改", :class => "fa fa-pencil-square-o"),  edit_leader_mission_job_path(job.mission, job), :class => "btn btn-xs btn-info") %>
@@ -59,7 +59,7 @@
             <% end %>
           </td>
           <td>
-            <%= job.created_at %>
+            <%= job.created_at.strftime("%Y/%m/%d") %>
          </td>
        </tr>
     <% end %>
