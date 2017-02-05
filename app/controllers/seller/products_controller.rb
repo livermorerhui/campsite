@@ -37,7 +37,7 @@ class Seller::ProductsController < ApplicationController
  private
 
   def find_product_and_check_permission
-    @product = product.find(params[:id])
+    @product = Product.find(params[:id])
 
     if current_user != @product.user
       redirect_to leader_products_path, alert: "You have no permission."
