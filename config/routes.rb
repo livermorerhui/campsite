@@ -25,5 +25,9 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :seller do
+    resources :products
+  end
+
   root 'welcome#index'
 end
