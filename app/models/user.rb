@@ -7,5 +7,6 @@ class User < ApplicationRecord
   has_many :missions
   has_many :jobs
   has_many :resumes
-  
+  has_many :products
+
 end

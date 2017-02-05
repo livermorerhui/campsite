@@ -1,5 +1,6 @@
 class Leader::JobsController < ApplicationController
-  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  
+  before_filter :authenticate_user!
   before_action :find_job_and_check_permission, only: [:edit, :update, :destroy, :publish, :hide]
   before_action :find_job_and_check_permission2, only: [:new, :create]
   layout "leader"

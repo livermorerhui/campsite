@@ -1,6 +1,6 @@
 class Leader::MissionsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
+  before_action :authenticate_user!
   before_action :find_mission_and_check_permission, only: [:show, :edit, :update, :destroy, :publish, :hide]
   layout "leader"
 

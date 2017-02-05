@@ -1,11 +1,11 @@
 class Seller::ProductsController < ApplicationController
 
   before_action :authenticate_user!
-
+  before_action :find_product_and_check_permission, only: [:show, :edit, :update, :destroy]
   layout "seller"
 
   def index
-    @products = Product.all
+    @products = current_user.products
   end
 
   def new
@@ -14,6 +14,7 @@ class Seller::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.user = current_user
 
     if @product.save
       redirect_to seller_products_path
@@ -23,12 +24,9 @@ class Seller::ProductsController < ApplicationController
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
-
     if @product.update(product_params)
       redirect_to seller_products_path
     else
@@ -37,6 +35,15 @@ class Seller::ProductsController < ApplicationController
   end
 
  private
+
+  def find_product_and_check_permission
+    @product = product.find(params[:id])
+
+    if current_user != @product.user
+      redirect_to leader_products_path, alert: "You have no permission."
+    end
+  end
+
   def product_params
     params.require(:product).permit(:title, :description, :quantity, :price, :image)
   end
