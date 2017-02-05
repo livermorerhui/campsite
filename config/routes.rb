@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+############     以下是招聘功能      ################################################################
+
   devise_for :users
 
   resources :missions do
@@ -25,9 +27,13 @@ Rails.application.routes.draw do
     end
   end
 
+########        以下是商店功能          ######################################################
+
   namespace :seller do
     resources :products
   end
+
+  resources :products
 
   root 'welcome#index'
 end
