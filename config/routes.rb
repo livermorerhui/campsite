@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-############     以下是招聘功能      ################################################################
+############     以下是招聘功能     ################################################################
 
   devise_for :users
 
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-########        以下是商店功能          ######################################################
+############     以下是商店功能     ################################################################
 
   namespace :seller do
     resources :products
@@ -44,8 +44,10 @@ Rails.application.routes.draw do
       delete :clean
     end
   end
-  
-  ########        以下是根页面          ######################################################
+
+  resources :cart_items
+
+############     以下是根页面     ################################################################
 
   root 'welcome#index'
 end
