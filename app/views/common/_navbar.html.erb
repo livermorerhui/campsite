@@ -33,9 +33,7 @@
                      <ul class="dropdown-menu">
                        <a class="list-group-item" href="/leader/missions"><i class="fa fa-superpowers fa-fw" aria-hidden="true"></i>&nbsp; I am Leader</a>
                        <a class="list-group-item" href="/seller/products"><i class="fa fa-handshake-o fa-fw" aria-hidden="true"></i>&nbsp; My Stroe</a>
-                       <li>
-                         <%= link_to("个人订单列表", buyer_orders_path ) %>
-                       </li>
+                       <a class="list-group-item" href="/buyer/orders"><i class="fa fa-list-alt fa-fw" aria-hidden="true"></i>&nbsp; My Order</a>
                        <li class="divider"> </li>
                        <li> <%= link_to(content_tag(:span, "登出", :class => "fa fa-sign-out"), destroy_user_session_path, method: :delete) %> </li>
                      </ul>
