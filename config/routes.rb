@@ -38,6 +38,9 @@ Rails.application.routes.draw do
       post :add_to_cart
     end
   end
+
+  resources :carts
+
   ########        以下是根页面          ######################################################
 
   root 'welcome#index'
