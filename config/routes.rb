@@ -48,6 +48,8 @@ Rails.application.routes.draw do
 
   resources :cart_items
 
+  resources :orders
+
 ############     以下是根页面     ################################################################
 
   root 'welcome#index'
