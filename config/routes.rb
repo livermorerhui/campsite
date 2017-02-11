@@ -50,6 +50,10 @@ Rails.application.routes.draw do
 
   resources :orders
 
+  namespace :account do
+    resources :orders
+  end
+
 ############     以下是根页面     ################################################################
 
   root 'welcome#index'
