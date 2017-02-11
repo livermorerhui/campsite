@@ -8,5 +8,6 @@ class User < ApplicationRecord
   has_many :jobs
   has_many :resumes
   has_many :products
+  has_many :orders
 
 end
